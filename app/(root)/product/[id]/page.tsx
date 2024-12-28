@@ -47,7 +47,7 @@ async function ProductPage({ params: { id } }: { params: { id: string } }) {
               {
                 name: "Large",
                 value: "3",
-                disabled: true
+                disabled: true,
               },
             ]}
           />
