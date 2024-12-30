@@ -24,7 +24,6 @@ async function ProductPage({ params: { id } }: { params: { id: string } }) {
           </p>
 
           <GroupVariants
-            selectedValue="2"
             items={[
               {
                 name: "Small",
@@ -37,7 +36,6 @@ async function ProductPage({ params: { id } }: { params: { id: string } }) {
               {
                 name: "Large",
                 value: "3",
-                disabled: true,
               },
             ]}
           />
