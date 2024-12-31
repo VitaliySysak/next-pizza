@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Header } from "@/shared/components/shared";
+import { Suspense } from 'react';
 
 export const metadata: Metadata = {
   title: "Next Pizza",
@@ -14,9 +15,11 @@ export default function HomeLayout({
 }>) {
   return (
     <main className="min-h-screen">
-      <Header />
-      {children}
+      <Suspense>
+        <Header />
+      </Suspense>
       {modal}
+      {children}
     </main>
   );
 }

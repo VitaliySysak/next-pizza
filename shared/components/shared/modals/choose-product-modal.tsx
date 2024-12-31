@@ -6,6 +6,7 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { ProductWithRelations } from "@/@types/prisma";
 import { ChooseProductForm, ChoosePizzaForm } from "@/shared/components/shared";
+import { Description } from "@radix-ui/react-dialog";
 
 interface Props {
   product: ProductWithRelations;
@@ -18,7 +19,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
 
   return (
     <Dialog open={Boolean(product)} onOpenChange={() => router.back()}>
-      <DialogTitle hidden>{product.name}</DialogTitle>
+      <DialogTitle></DialogTitle>
       <DialogContent className={cn("p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden", className)}>
         {isPizzaForm ? (
           <ChoosePizzaForm imageUrl={product.imageUrl} name={product.name} ingredients={product.ingredients} />
@@ -26,6 +27,7 @@ export const ChooseProductModal: React.FC<Props> = ({ product, className }) => {
           <ChooseProductForm imageUrl={product.imageUrl} name={product.name} />
         )}
       </DialogContent>
+      <Description />
     </Dialog>
   );
 };

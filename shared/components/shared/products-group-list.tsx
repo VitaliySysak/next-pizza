@@ -17,13 +17,13 @@ interface ProductsGroupListProps {
 export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({ title, items, listClassName, categoryId, className }) => {
   const setActiveCategoryId = useCategoryStore((state) => state.setActiveId);
   const intersectionRef = React.useRef(null);
-  const intersection = useIntersection(intersectionRef, { threshold: 0.4 });
+  const intersection = useIntersection(intersectionRef, { threshold: 0.2 });
 
   React.useEffect(() => {
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
     }
-  }, [categoryId, intersection?.isIntersecting, title, setActiveCategoryId]);
+  }, [categoryId, intersection?.isIntersecting, title]);
   return (
     <div className={className} id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />

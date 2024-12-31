@@ -17,4 +17,5 @@ export { ChoosePizzaForm } from "./choose-pizza-form";
 export { ProductImage } from "./product-image";
 export { PizzaImage } from "./pizza-image";
 export { ProductCard } from "./product-card";
+export { IngredientItem } from "./ingredient-item";
 export * from "./modals";

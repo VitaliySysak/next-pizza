@@ -76,7 +76,7 @@ async function up() {
       imageUrl: "https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp",
       categoryId: 1,
       ingredients: {
-        connect: _ingredients.slice(10, 15),
+        connect: _ingredients.slice(10, 17),
       },
     },
   });
