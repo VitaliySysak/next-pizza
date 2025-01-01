@@ -5,27 +5,33 @@ import { cn } from "@/shared/lib/utils";
 import { Title } from "./title";
 import { Button } from "../ui";
 import { GroupVariants, IngredientItem, PizzaImage } from "@/shared/components/shared";
-import { PizzaSize, pizzaSizes, PizzaType, pizzaTypes } from "@/shared/constants/pizza";
-import { Ingredient } from "@prisma/client";
-import { useSet } from "react-use";
+import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza";
+import { Ingredient, ProductItem } from "@prisma/client";
+import { usePizzaOptions } from "@/shared/hooks";
+import { getPizzaDetails } from "@/shared/lib";
 
 interface Props {
   imageUrl: string;
   name: string;
   ingredients: Ingredient[];
-  items?: any[];
+  items: ProductItem[];
+  onClickAddCart?: VoidFunction;
   loading?: boolean;
   className?: string;
 }
 
-export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, className }) => {
-  const [size, setSize] = React.useState<PizzaSize>(40);
-  const [type, setType] = React.useState<PizzaType>(1);
+export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, className, onClickAddCart }) => {
+  const { size, type, selectedIngredients, availableSizes, setSize, setType, toggleIngredient } = usePizzaOptions(items);
+  const { totalPrice, textDetails } = getPizzaDetails(type, size, items, ingredients, selectedIngredients);
 
-  const [selectedIngredients, { toggle: toggleIngredient }] = useSet(new Set<number>([]));
-
-  const textDetails = "30 cm, classic dough 30";
-  const totalPrice = 100;
+  const handleClickAdd = () => {
+    onClickAddCart?.();
+    console.log("order: ", {
+      size,
+      type,
+      ingredients: selectedIngredients,
+    });
+  };
 
   return (
     <div className={cn(className, "flex flex-1")}>
@@ -37,7 +43,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingred
         <p className="text-gray-400">{textDetails}</p>
 
         <div className="flex flex-col gap-4 mt-5">
-          <GroupVariants items={pizzaSizes} value={String(size)} onClick={(value) => setSize(Number(value) as PizzaSize)} />
+          <GroupVariants items={availableSizes} value={String(size)} onClick={(value) => setSize(Number(value) as PizzaSize)} />
           <GroupVariants items={pizzaTypes} value={String(type)} onClick={(value) => setType(Number(value) as PizzaType)} />
         </div>
         <div className="bg-gray-50 p-5 rounded-md h-[420px] overflow-auto scrollbar mt-5">
@@ -55,7 +61,9 @@ export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingred
           </div>
         </div>
 
-        <Button className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">Add to Cart for ${totalPrice}</Button>
+        <Button onClick={handleClickAdd} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+          Add to Cart for ${totalPrice}
+        </Button>
       </div>
     </div>
   );

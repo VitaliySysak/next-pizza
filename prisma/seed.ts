@@ -84,6 +84,7 @@ async function up() {
 
   await prisma.productItem.createMany({
     data: [
+      // Pizza variants
       generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20 }),
       generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40 }),

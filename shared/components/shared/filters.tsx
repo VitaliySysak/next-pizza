@@ -57,6 +57,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
         <p className="font-bold mb-3">Price from/to:</p>
         <div className="flex gap-3 mb-5">
           <Input
+            name='price from'
             type="number"
             placeholder="0"
             min={0}
