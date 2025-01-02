@@ -18,4 +18,7 @@ export { ProductImage } from "./product-image";
 export { PizzaImage } from "./pizza-image";
 export { ProductCard } from "./product-card";
 export { IngredientItem } from "./ingredient-item";
+export { CartButton } from "./cart-button";
+export { CartDrawer } from "./cart-drawer";
+export { CountIconButton } from "./count-icon-button";
 export * from "./modals";
