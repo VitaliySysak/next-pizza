@@ -1,4 +1,3 @@
-import { Cart } from "@prisma/client";
 import { CartDTO } from "../services/dto/cart.dto";
 import { calculateCartItemTotalPrice } from "./calculate-cart-item-total-price";
 
