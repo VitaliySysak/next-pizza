@@ -15,22 +15,20 @@ interface Props {
   name: string;
   ingredients: Ingredient[];
   items: ProductItem[];
-  onClickAddCart?: VoidFunction;
+  onSubmit: (itemId: number, ingredients: number[]) => void;
   loading?: boolean;
   className?: string;
 }
 
-export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, className, onClickAddCart }) => {
-  const { size, type, selectedIngredients, availableSizes, setSize, setType, toggleIngredient } = usePizzaOptions(items);
+export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, className, onSubmit }) => {
+  const { size, type, selectedIngredients, availableSizes, currentItemId, setSize, setType, toggleIngredient } =
+    usePizzaOptions(items);
   const { totalPrice, textDetails } = getPizzaDetails(type, size, items, ingredients, selectedIngredients);
 
   const handleClickAdd = () => {
-    onClickAddCart?.();
-    console.log("order: ", {
-      size,
-      type,
-      ingredients: selectedIngredients,
-    });
+    if (currentItemId) {
+      onSubmit(currentItemId, Array.from(selectedIngredients));
+    }
   };
 
   return (

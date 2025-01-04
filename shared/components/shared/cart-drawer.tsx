@@ -15,15 +15,20 @@ interface Props {
 }
 
 export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className, children }) => {
-  // const [totalAmount, fetchCartItems, items] = useCartStore((state) => [state.totalAmount, state.fetchCartItems, state.items]);
   const totalAmount = useCartStore((state) => state.totalAmount);
   const fetchCartItems = useCartStore((state) => state.fetchCartItems);
   const items = useCartStore((state) => state.items);
-
+  const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
+  const removeCartItem = useCartStore((state) => state.removeCartItem);
 
   React.useEffect(() => {
     fetchCartItems();
   }, []);
+
+  const onClickCountButton = (id: number, quantity: number, type: "plus" | "minus") => {
+    const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
+    updateItemQuantity(id, newQuantity);
+  };
 
   return (
     <Sheet>
@@ -31,7 +36,12 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className
       <SheetContent className="flex flex-col justify-between pb-0 bg-[#F4F1EE]">
         <SheetHeader>
           <SheetTitle>
-            <span className="font-bold">3 items in the cart</span>
+            {items.length === 1 ? (
+              <span className="font-bold">{`${items.length} item`}</span>
+            ) : (
+              <span className="font-bold">{`${items.length} items`}</span>
+            )}
+            &nbsp;in the cart
           </SheetTitle>
         </SheetHeader>
 
@@ -50,6 +60,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren<Props>> = ({ className
               name={item.name}
               price={item.price}
               quantity={item.quantity}
+              onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
+              onClickRemove={() => removeCartItem(item.id)
+              }
+              className="mb-2"
             />
           ))}
         </div>
