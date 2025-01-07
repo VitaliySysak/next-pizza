@@ -3,8 +3,8 @@
 import React from "react";
 import { cn } from "@/shared/lib/utils";
 import { Title } from "./title";
-import { Button } from "../ui";
-import { GroupVariants, IngredientItem, PizzaImage } from "@/shared/components/shared";
+import { Button } from "@/shared/components/ui";
+import { GroupVariants, IngredientItem, PizzaImage } from "@/shared/components/features";
 import { PizzaSize, PizzaType, pizzaTypes } from "@/shared/constants/pizza";
 import { Ingredient, ProductItem } from "@prisma/client";
 import { usePizzaOptions } from "@/shared/hooks";
@@ -20,7 +20,7 @@ interface Props {
   className?: string;
 }
 
-export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, className, onSubmit }) => {
+export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingredients, loading, className, onSubmit }) => {
   const { size, type, selectedIngredients, availableSizes, currentItemId, setSize, setType, toggleIngredient } =
     usePizzaOptions(items);
   const { totalPrice, textDetails } = getPizzaDetails(type, size, items, ingredients, selectedIngredients);
@@ -36,7 +36,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingred
       <PizzaImage size={size} imageUrl={imageUrl} />
 
       <div className="w-[490px] bg-[#FCFCFC] p-7">
-        <Title text={name} size="md" className="font-extrabold mb-1" />
+        <Title text={name} size="md" className="font-extrabold mb-1"  />
 
         <p className="text-gray-400">{textDetails}</p>
 
@@ -59,7 +59,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({ name, items, imageUrl, ingred
           </div>
         </div>
 
-        <Button onClick={handleClickAdd} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <Button loading={loading} onClick={handleClickAdd} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Add to Cart for ${totalPrice}
         </Button>
       </div>

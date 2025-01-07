@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
 
     return response;
   } catch (error) {
-    console.log("[CART_GET] Server error", error);
+    console.log("[CART_POST] Server error", error);
 
     return NextResponse.json({ message: "Failed to create cart" }, { status: 500 });
   }

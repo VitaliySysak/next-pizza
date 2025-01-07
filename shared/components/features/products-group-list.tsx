@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useIntersection } from "react-use";
-import { Title, ProductCard } from "@/shared/components/shared"
+import { Title, ProductCard } from "@/shared/components/features"
 import { cn } from "@/shared/lib/utils";
 import { useCategoryStore } from "@/shared/store/category";
 

@@ -1,6 +1,6 @@
 import { cn } from "@/shared/lib/utils";
 import React from "react";
-import { CountIconButton } from "@/shared/components/shared";
+import { CountIconButton } from "@/shared/components/features";
 
 export interface CountButtonProps {
   value?: number;

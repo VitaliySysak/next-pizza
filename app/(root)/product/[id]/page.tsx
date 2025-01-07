@@ -1,4 +1,4 @@
-import { Container, Title, ProductImage, GroupVariants } from "@/shared/components/shared";
+import { Container, Title, ProductImage, GroupVariants } from "@/shared/components/features";
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 import React from "react";

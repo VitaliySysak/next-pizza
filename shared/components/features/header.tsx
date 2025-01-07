@@ -4,9 +4,9 @@ import logo from "@/public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { User } from "lucide-react";
-import { Container, SearchInput } from "@/shared/components/shared";
+import { Container, SearchInput } from "@/shared/components/features";
 import { Button } from "@/shared/components/ui";
-import { CartButton } from "@/shared/components/shared";
+import { CartButton } from "@/shared/components/features";
 
 interface Props {
   className?: string;
@@ -28,7 +28,9 @@ export const Header: React.FC<Props> = (className) => {
         </Link>
 
         <div className="mx-10 flex-1">
-          <SearchInput />
+          <React.Suspense>
+            <SearchInput />
+          </React.Suspense>
         </div>
 
         {/*Right side */}
@@ -38,7 +40,9 @@ export const Header: React.FC<Props> = (className) => {
             Enter
           </Button>
 
-          <div><CartButton /></div>
+          <div>
+            <CartButton />
+          </div>
         </div>
       </Container>
     </header>

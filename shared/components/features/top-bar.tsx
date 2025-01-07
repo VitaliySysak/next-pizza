@@ -1,5 +1,5 @@
 import { cn } from "@/shared/lib/utils";
-import { Container, Categories, SortPopup } from "@/shared/components/shared";
+import { Container, Categories, SortPopup } from "@/shared/components/features";
 import { Category } from "@prisma/client";
 
 interface Props {

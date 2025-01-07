@@ -2,7 +2,7 @@
 
 import React from "react";
 import { cn } from "@/shared/lib/utils";
-import { Title, ProductImage } from "@/shared/components/shared";
+import { Title, ProductImage } from "@/shared/components/features";
 import { Button } from "../ui";
 
 interface Props {
@@ -14,9 +14,8 @@ interface Props {
   className?: string;
 }
 
-export const ChooseProductForm: React.FC<Props> = ({ name, imageUrl, price, className, onSubmit }) => {
+export const ChooseProductForm: React.FC<Props> = ({ name, imageUrl, price, className, loading, onSubmit }) => {
   const textDetails = "30 cm, classic dough 30";
-  const totalPrice = 100;
   return (
     <div className={cn(className, "flex flex-1")}>
       <ProductImage imageUrl={imageUrl} />
@@ -26,7 +25,7 @@ export const ChooseProductForm: React.FC<Props> = ({ name, imageUrl, price, clas
 
         <p className="text-gray-400">{textDetails}</p>
 
-        <Button onClick={onSubmit} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+        <Button loading={loading} onClick={()=> onSubmit?.()} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
           Add to Cart for ${price}
         </Button>
       </div>

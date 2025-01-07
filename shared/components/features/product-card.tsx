@@ -2,7 +2,7 @@ import React from "react";
 import { cn } from "@/shared/lib/utils";
 import { Plus } from "lucide-react";
 import { Button } from "@/shared/components/ui";
-import { Title, CountButton } from "@/shared/components/shared"
+import { Title, CountButton } from "@/shared/components/features"
 import Image from "next/image";
 import Link from "next/link";
 

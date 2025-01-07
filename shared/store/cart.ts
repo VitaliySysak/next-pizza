@@ -17,7 +17,7 @@ export interface CartState {
   updateItemQuantity: (id: number, quantity: number) => Promise<void>;
 
   /* request for adding products to cart */
-  addCartItem: (values: any) => Promise<void>;
+  addCartItem: (values: CreateCartItemValues) => Promise<void>;
 
   /* request for deleting products from cart */
   removeCartItem: (id: number) => Promise<void>;
