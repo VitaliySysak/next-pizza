@@ -1,5 +1,3 @@
-import { pizzaSizes } from "./../../constants/pizza";
-import { products } from "./../../../prisma/constants";
 import { Cart, CartItem, Ingredient, Product, ProductItem } from "@prisma/client";
 
 export type CartItemDTO = CartItem & { productItem: ProductItem & { product: Product }; ingredients: Ingredient[] };
