@@ -21,4 +21,5 @@ export { IngredientItem } from "./ingredient-item";
 export { CartButton } from "./cart-button";
 export { CartDrawer } from "./cart-drawer";
 export { CountIconButton } from "./count-icon-button";
+export { ProductForm } from "./product-form";
 export * from "./modals";

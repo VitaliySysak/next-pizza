@@ -2,13 +2,14 @@
 
 import React from "react";
 import { useIntersection } from "react-use";
-import { Title, ProductCard } from "@/shared/components/features"
+import { Title, ProductCard } from "@/shared/components/features";
 import { cn } from "@/shared/lib/utils";
 import { useCategoryStore } from "@/shared/store/category";
+import { ProductWithRelations } from "@/@types/prisma";
 
 interface ProductsGroupListProps {
   title: string;
-  items: any[];
+  items: ProductWithRelations[];
   categoryId: number;
   listClassName?: string;
   className?: string;
@@ -35,6 +36,7 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({ title, ite
             name={product.name}
             imageUrl={product.imageUrl}
             price={product.items[0].price}
+            ingredients={product.ingredients}
           />
         ))}
       </div>
