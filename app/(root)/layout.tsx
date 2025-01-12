@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Header } from "@/shared/components/features";
+import { Header } from "@/src/components/shared";
 
 export const metadata: Metadata = {
-  title: "Next Pizza",
+  title: "Next Pizza | Home",
 };
 
 export default function HomeLayout({

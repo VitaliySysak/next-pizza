@@ -1,8 +1,8 @@
-import { Container, ProductForm } from "@/shared/components/features";
+import { Container, ProductForm } from "@/src/components/shared";
 import { prisma } from "@/prisma/prisma-client";
 import { notFound } from "next/navigation";
 
-async function ProductPage({ params: { id } }: { params: { id: string } }) {
+export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
   const product = await prisma.product.findFirst({
     where: { id: Number(id) },
     include: {
@@ -30,5 +30,3 @@ async function ProductPage({ params: { id } }: { params: { id: string } }) {
     </Container>
   );
 }
-
-export default ProductPage;

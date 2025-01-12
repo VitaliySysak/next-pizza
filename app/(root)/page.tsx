@@ -1,6 +1,6 @@
-import { Container, Filters, ProductsGroupList, Title, TopBar } from "@/shared/components/features";
+import { Container, Filters, ProductsGroupList, Title, TopBar } from "@/src/components/shared";
 import { Suspense } from "react";
-import { findPizzas, GetSearchParams } from "@/shared/lib/find-pizzas";
+import { findPizzas, GetSearchParams } from "@/src/lib/find-pizzas";
 
 export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
   const categories = await findPizzas(searchParams);
