@@ -1,17 +1,41 @@
-import { CheckoutItemsDetails, Container, Title, WhiteBlock } from "@/src/components/shared";
+"use client";
+
+import { CheckoutItem, CheckoutSideBar, Container, Title, WhiteBlock } from "@/src/components/shared";
 import { Input } from "@/src/components/ui";
 import { Textarea } from "@/src/components/ui/textarea";
-import { Package, Percent, Truck } from "lucide-react";
+import { PizzaSize, PizzaType } from "@/src/constants/pizza";
+import { useCart } from "@/src/hooks";
+import { getCartItemDetails } from "@/src/lib";
 
 export default function Chekout() {
+  const { items, loading, totalAmount, addCartItem, updateItemQuantity, removeCartItem } = useCart();
+
   return (
     <Container className="mt-5">
       <Title text="Checkout process" className="font-extrabold mb-6 text-[36px]" />
 
       <div className="flex gap-10">
+
         {/* Left side */}
         <div className="flex flex-col gap-10 flex-1 mb-20">
-          <WhiteBlock title="1. Cart">123123123123</WhiteBlock>
+          <WhiteBlock title="1. Cart">
+            <div className="flex flex-col gap-5">
+              {items.map((item) => (
+                <CheckoutItem
+                  key={item.id}
+                  id={item.id}
+                  imageUrl={item.imageUrl}
+                  details={getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize)}
+                  name={item.name}
+                  price={item.price}
+                  quantity={item.quantity}
+                  disabled={item.disabled}
+                  onClickCountButton={(type) => updateItemQuantity(item.id, item.quantity, type)}
+                  onClickRemove={() => removeCartItem(item.id)}
+                />
+              ))}
+            </div>
+          </WhiteBlock>
 
           <WhiteBlock title="2. Personal data">
             <div className="grid grid-cols-2 gap-5">
@@ -31,42 +55,7 @@ export default function Chekout() {
         </div>
 
         {/* Right side */}
-        <div className="w-[450px]">
-          <WhiteBlock className="p-6 sticky top-4">
-            <div className="flex flex-col gap-1">
-              <span className="text-xl">Total:</span>
-              <span className="text-[34px] font-extrabold">$3000</span>
-            </div>
-
-            <CheckoutItemsDetails
-              title={
-                <div className="flex items-center">
-                  <Package size={18} className="mr-2 text-gray-300" />
-                  Product cost:
-                </div>
-              }
-              value="3000"
-            />
-            <CheckoutItemsDetails
-              title={
-                <div className="flex items-center">
-                  <Percent size={18} className="mr-2 text-gray-300" />
-                  Tax:
-                </div>
-              }
-              value="300"
-            />
-            <CheckoutItemsDetails
-              title={
-                <div className="flex items-center">
-                  <Truck size={18} className="mr-2 text-gray-300" />
-                  Delivery:
-                </div>
-              }
-              value="100"
-            />
-          </WhiteBlock>
-        </div>
+        <CheckoutSideBar totalAmount={totalAmount} />
       </div>
     </Container>
   );

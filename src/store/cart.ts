@@ -14,7 +14,7 @@ export interface CartState {
   fetchCartItems: () => Promise<void>;
 
   /* request for updating products quantity */
-  updateItemQuantity: (id: number, quantity: number) => Promise<void>;
+  updateItemQuantity: (id: number, quantity: number, type: "plus" | "minus") => Promise<void>;
 
   /* request for adding products to cart */
   addCartItem: (values: CreateCartItemValues) => Promise<void>;
@@ -42,10 +42,11 @@ export const useCartStore = create<CartState>((set, get) => ({
     }
   },
 
-  updateItemQuantity: async (id: number, quantity: number) => {
+  updateItemQuantity: async (id: number, quantity: number, type: "plus" | "minus") => {
     try {
       set({ loading: true, error: false });
-      const data = await Api.cart.updateItemQuantity(id, quantity);
+      const newQuantity = type === "plus" ? quantity + 1 : quantity - 1;
+      const data = await Api.cart.updateItemQuantity(id, newQuantity);
       set(getCartDetails(data));
     } catch (error) {
       console.log("Error while updateItemQuantity:", error);

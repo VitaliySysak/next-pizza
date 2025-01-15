@@ -3,7 +3,7 @@ import React from "react";
 
 interface CheckoutItemsDetailsProps {
   title?: React.ReactNode;
-  value?: string;
+  value?: number;
   className?: string;
 }
 
