@@ -1,5 +1,4 @@
 import React from "react";
-import { cn } from "@/src/lib/utils";
 import { WhiteBlock } from "../white-block";
 import { FormInput } from "../checkout-form";
 

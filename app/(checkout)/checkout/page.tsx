@@ -26,6 +26,7 @@ export default function Chekout() {
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
+      alert(JSON.stringify(data, null, 2));
     } catch (error) {
       console.log(error);
     } finally {
@@ -42,7 +43,7 @@ export default function Chekout() {
           <div className="flex flex-col gap-10 flex-1 mb-20">
 
             {/* Cart */}
-            <Cart items={items} updateItemQuantity={updateItemQuantity} removeCartItem={removeCartItem} />
+            <Cart items={items} loading={loading} updateItemQuantity={updateItemQuantity} removeCartItem={removeCartItem} />
 
             {/* Personal data */}
             <PersonalInfo  />
