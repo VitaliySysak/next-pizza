@@ -3,12 +3,13 @@ import { WhiteBlock } from "../white-block";
 import { FormInput } from "../checkout-form";
 
 interface Props {
+  loading: boolean;
   className?: string;
 }
 
-export const PersonalInfo: React.FC<Props> = ({ className }) => {
+export const PersonalInfo: React.FC<Props> = ({ loading, className }) => {
   return (
-    <WhiteBlock title="2. Personal data">
+    <WhiteBlock title="2. Personal data" className={loading ? "opacity-40 pointer-events-none" : ""}>
         <div className="grid grid-cols-2 gap-5">
           <FormInput  name="firstName" className="text-base" placeholder="First Name" />
           <FormInput  name="lastName" className="text-base" placeholder="Last Name" />

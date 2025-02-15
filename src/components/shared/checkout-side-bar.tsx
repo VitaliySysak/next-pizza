@@ -2,16 +2,17 @@ import React from "react";
 import { WhiteBlock } from "./white-block";
 import { CheckoutItemsDetails } from "./checkout-items-details";
 import { ArrowRight, Package, Percent, Truck } from "lucide-react";
-import { Button } from "../ui";
+import { Button, Skeleton } from "../ui";
 
 const VAT = 15;
 const DELIVERY_PRICE = 250;
 
 interface CheckoutSideBarProps {
   totalAmount: number;
+  loading: boolean;
 }
 
-export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount }) => {
+export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount, loading }) => {
   const vatPrice = (totalAmount * VAT) / 100;
   const totalPrice = totalAmount + DELIVERY_PRICE + vatPrice;
   return (
@@ -19,7 +20,7 @@ export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount })
       <WhiteBlock className="p-6 sticky top-4">
         <div className="flex flex-col gap-1">
           <span className="text-xl">Total:</span>
-          <span className="text-[34px] font-extrabold">${totalPrice}</span>
+          {loading ? <Skeleton className="w-48 h-11 rounded-[10px]" /> : <span className="h-11 text-[34px] font-extrabold">${totalPrice}</span>}
         </div>
 
         <CheckoutItemsDetails
@@ -30,6 +31,7 @@ export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount })
             </div>
           }
           value={totalAmount}
+          loading={loading}
         />
         <CheckoutItemsDetails
           title={
@@ -39,6 +41,7 @@ export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount })
             </div>
           }
           value={vatPrice}
+          loading={loading}
         />
         <CheckoutItemsDetails
           title={
@@ -48,11 +51,13 @@ export const CheckoutSideBar: React.FC<CheckoutSideBarProps> = ({ totalAmount })
             </div>
           }
           value={DELIVERY_PRICE}
+          loading={loading}
         />
 
         <Button
           type="submit"
-          // disabled={!totalAmount || submitting}
+          loading={loading}
+          disabled={loading}
           className="w-full h-14 rounded-2xl mt-6 text-base font-bold"
         >
           Proceed to payment

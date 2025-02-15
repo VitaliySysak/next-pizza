@@ -27,7 +27,7 @@ export const Cart: React.FC<Props> = ({ className, items, loading, updateItemQua
     <WhiteBlock title="1. Cart">
       <div className="flex flex-col gap-5">
         {firstLoading
-          ? [...Array(4)].map((_, index) => <CheckoutItemSkeleton key={index} />)
+          ? [...Array(3)].map((_, index) => <CheckoutItemSkeleton key={index} />)
           : items.map((item) => (
               <CheckoutItem
                 key={item.id}
