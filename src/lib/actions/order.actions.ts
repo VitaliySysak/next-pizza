@@ -90,29 +90,18 @@ export async function createOrder(data: CheckoutFormValues) {
 
     // If payment url not found return error
     if(!paymentUrl) {
-      throw new Error("Payment data not found")
+      throw new Error("Payment url not found")
     }
 
-    // // Write payment order id
-    // await prisma.order.update({
-    //   where: {
-    //     id: order.id,
-    //   },
-    //   data: {
-    //     paymentId: order.id
-    //   },
-    // })
-
-    // // Send pay order email
-    // await sendEmail(
-    //   data.email,
-    //   "Next Pizza / Pay order #" + order.id,
-    //   PayOrderTemplate({
-    //     orderId: order.id,
-    //     totalAmount: order.totalAmount,
-    //     paymentUrl,
-    //   })
-    // );
+    // Write payment order id
+    await prisma.order.update({
+      where: {
+        id: order.id,
+      },
+      data: {
+        paymentId: order.id
+      },
+    })
 
     return paymentUrl
   } catch (error) {

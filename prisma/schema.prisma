@@ -91,7 +91,7 @@ model Order {
   token       String
   totalAmount Int
   status      OrderStatus
-  paymentId   String?
+  paymentId   Int?
   items       Json
   fullName    String
   address     String

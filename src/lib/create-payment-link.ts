@@ -21,6 +21,5 @@ export const createPaymentLink = ({ amount, orderId, description }: CreatePaymen
     .createHash("sha1")
     .update(LIQPAY_PRIVATE_KEY + data + LIQPAY_PRIVATE_KEY)
     .digest("base64");
-
   return `https://www.liqpay.ua/api/3/checkout?data=${data}&signature=${signature}`;
 };

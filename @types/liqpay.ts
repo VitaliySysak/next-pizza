@@ -15,3 +15,10 @@ export interface CreatePaymentLinkProps {
   orderId: number;
   description: string;
 }
+
+export type PaymentCallbackData = {
+  data: string,
+  signature: string,
+  base64_encode: string,
+  sha1: string
+}
