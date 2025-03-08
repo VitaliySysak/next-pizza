@@ -1,7 +1,7 @@
 import crypto from "crypto";
 import { CreatePaymentLinkProps, PaymentData } from "@/@types/liqpay";
 
-const { LIQPAY_PRIVATE_KEY, LIQPAY_PUBLIC_KEY, LIQPAY_RESULT_CALLBACK_URL, LIQPAY_SERVER_CALLBACK_URL } = process.env;
+const { LIQPAY_PRIVATE_KEY, LIQPAY_PUBLIC_KEY, LIQPAY_RESULT_CALLBACK_URL, LIQPAY_SERVER_CALLBACK_URL, BASE_URL } = process.env;
 
 export const createPaymentLink = ({ amount, orderId, description }: CreatePaymentLinkProps) => {
   const paymentData: PaymentData = {
@@ -12,8 +12,8 @@ export const createPaymentLink = ({ amount, orderId, description }: CreatePaymen
     currency: "UAH",
     description: description,
     order_id: orderId,
-    result_url: LIQPAY_RESULT_CALLBACK_URL!,
-    server_url: LIQPAY_SERVER_CALLBACK_URL!,
+    result_url: BASE_URL + LIQPAY_RESULT_CALLBACK_URL!,
+    server_url: BASE_URL + LIQPAY_SERVER_CALLBACK_URL!,
   };
 
   const data = Buffer.from(JSON.stringify(paymentData)).toString("base64");

@@ -28,8 +28,7 @@ export default function Chekout() {
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
-      alert(JSON.stringify(data, null, 2));
-      const url = await createOrder(data);
+      const url = await createOrder(data, items);
 
       toast.success("Order created successfully! Redirect to payment...", { icon: "✅" });
 

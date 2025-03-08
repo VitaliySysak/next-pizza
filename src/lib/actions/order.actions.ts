@@ -5,11 +5,11 @@ import { CheckoutFormValues } from "../utils";
 import { OrderStatus } from "@prisma/client";
 import { cookies } from "next/headers";
 import { createPaymentLink } from "../create-payment-link";
-// import { sendEmail } from "../send-email";
-// import { PayOrderTemplate } from "@/src/components/shared";
-// import { createPaymentLink } from "../create-payment-link";
+import { getCartItemDetails } from "@/src/lib";
+import { CartStateItem } from "@/src/lib/get-cart-details";
+import { PizzaSize, PizzaType } from "@/src/constants/pizza";
 
-export async function createOrder(data: CheckoutFormValues) {
+export async function createOrder(data: CheckoutFormValues, items: CartStateItem[]) {
   try {
     const cookieStore = cookies();
     const cartToken = cookieStore.get("cartToken")?.value;
@@ -64,33 +64,27 @@ export async function createOrder(data: CheckoutFormValues) {
       },
     });
 
-    // Clear cart totalAmount
-    await prisma.cart.update({
-      data: {
-        totalAmount: 0,
-      },
-      where: {
-        id: userCart.id,
-      },
-    });
-
-    // Delete cartItems
-    await prisma.cartItem.deleteMany({
-      where: {
-        cartId: userCart.id,
-      },
-    });
+    const description =
+      items
+        .map(
+          (item) =>
+            item.name +
+            (item.pizzaSize
+              ? " Pizza: " + getCartItemDetails(item.ingredients, item.pizzaType as PizzaType, item.pizzaSize as PizzaSize)
+              : "")
+        )
+        .join(";\n") + ";";
 
     // Create payment url
-    const paymentUrl = await createPaymentLink({
+    const paymentUrl = createPaymentLink({
       amount: order.totalAmount,
       orderId: order.id,
-      description: "Payment for order #" + order.id,
+      description,
     });
 
     // If payment url not found return error
-    if(!paymentUrl) {
-      throw new Error("Payment url not found")
+    if (!paymentUrl) {
+      throw new Error("Payment url not found");
     }
 
     // Write payment order id
@@ -99,11 +93,11 @@ export async function createOrder(data: CheckoutFormValues) {
         id: order.id,
       },
       data: {
-        paymentId: order.id
+        paymentId: order.id,
       },
-    })
+    });
 
-    return paymentUrl
+    return paymentUrl;
   } catch (error) {
     console.log("Error while execution createOrder:", error);
   }
