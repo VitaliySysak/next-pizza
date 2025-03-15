@@ -35,7 +35,7 @@ export async function PATCH(req: NextRequest, { params }: { params: { id: string
 
     return NextResponse.json(updatedUserCart);
   } catch (error) {
-    console.log("[CART_PATCH] Server error", error);
+    console.error("[CART_PATCH] Server error", error);
     return NextResponse.json({ message: "Error while updating cart" }, { status: 500 });
   }
 }
@@ -69,7 +69,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { id: strin
 
     return NextResponse.json(updatedUserCart);
   } catch (error) {
-    console.log("[CART_DELETE] Server error", error);
+    console.error("[CART_DELETE] Server error", error);
 
     return NextResponse.json({ message: "Failed to delete cart" }, { status: 500 });
   }

@@ -40,7 +40,7 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json(userCart);
   } catch (error) {
-    console.log("[CART_GET] Server error", error);
+    console.error("[CART_GET] Server error", error);
     return NextResponse.json({ message: "Failed to get the cart" }, { status: 500 });
   }
 }
@@ -103,7 +103,7 @@ export async function POST(req: NextRequest) {
     resp.cookies.set("cartToken", token);
     return resp;
   } catch (error) {
-    console.log("[CART_POST] Server error", error);
+    console.error("[CART_POST] Server error", error);
     return NextResponse.json({ message: "Failed to create the cart" }, { status: 500 });
   }
 }

@@ -99,6 +99,6 @@ export async function createOrder(data: CheckoutFormValues, items: CartStateItem
 
     return paymentUrl;
   } catch (error) {
-    console.log("Error while execution createOrder:", error);
+    console.error("Error while execution createOrder:", error);
   }
 }

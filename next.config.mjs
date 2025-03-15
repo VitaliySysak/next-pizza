@@ -1,3 +1,5 @@
+import { hostname } from "os";
+
 const nextConfig = {
   reactStrictMode: false,
   images: {
@@ -17,6 +19,18 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "cdn.dodostatic.net",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn-icons-png.flaticon.com",
+      },
+      {
+        protocol: "https",
+        hostname: "dominos.ua",
+      },
+      {
+        protocol: "https",
+        hostname: "prontopizza.ua",
       },
     ],
   },

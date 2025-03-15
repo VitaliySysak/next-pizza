@@ -35,7 +35,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       const data = await Api.cart.getCart();
       set(getCartDetails(data));
     } catch (error) {
-      console.log("Error while fetchCartItems:", error);
+      console.error("Error while fetchCartItems:", error);
       set({ error: true });
     } finally {
       set({ loading: false });
@@ -49,7 +49,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       const data = await Api.cart.updateItemQuantity(id, newQuantity);
       set(getCartDetails(data));
     } catch (error) {
-      console.log("Error while updateItemQuantity:", error);
+      console.error("Error while updateItemQuantity:", error);
       set({ error: true });
     } finally {
       set({ loading: false });
@@ -62,7 +62,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       const data = await Api.cart.addCartItem(values);
       set(getCartDetails(data));
     } catch (error) {
-      console.log("Error while removeCartItem:", error);
+      console.error("Error while removeCartItem:", error);
       set({ error: true });
     } finally {
       set({ loading: false });
@@ -79,7 +79,7 @@ export const useCartStore = create<CartState>((set, get) => ({
       const data = await Api.cart.removeCartItem(id);
       set(getCartDetails(data));
     } catch (error) {
-      console.log("Error while removeCartItem:", error);
+      console.error("Error while removeCartItem:", error);
       set({ error: true });
     } finally {
       set((state) => ({ loading: false, items: state.items.map((items) => ({ ...items, disabled: false })) }));

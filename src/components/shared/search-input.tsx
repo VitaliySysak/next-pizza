@@ -29,7 +29,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({ className }) => {
         const responce = await Api.products.search(searchQuery);
         setProducts(responce);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     },
     250,

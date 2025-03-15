@@ -5,9 +5,7 @@ import React from "react";
 import logo from "@/public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
-import { User } from "lucide-react";
-import { Container, SearchInput } from "@/src/components/shared";
-import { Button } from "@/src/components/ui";
+import { AuthModal, Container, ProfileButton, SearchInput } from "@/src/components/shared";
 import { CartButton } from "@/src/components/shared";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
@@ -19,18 +17,27 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
+  const [openAuthModal, setOpenAuthModal] = React.useState(false);
+
   const searchParams = useSearchParams();
   const router = useRouter();
 
   React.useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
-    params.delete("paid");
-    router.replace(`?${params.toString()}`);
-    
+    let toastMessage = "";
+
     if (searchParams.has("paid")) {
+      toastMessage = "Order successfully paid!";
+    }
+
+    if (searchParams.has("verified")) {
+      toastMessage = "Email confirmed successfully!";
+    }
+
+    if (toastMessage) {
       setTimeout(() => {
-        toast.success("Order successfully paid!");
-      }, 500);
+        router.replace("/");
+        toast.success(toastMessage, { duration: 4000 });
+      }, 1000);
     }
   }, []);
 
@@ -57,10 +64,9 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 
         {/*Right side */}
         <div className="flex items-center gap-3">
-          <Button variant="outline" className="flex items-center gap-1">
-            <User size={16} />
-            Enter
-          </Button>
+          <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+
+          <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
           {hasCart && (
             <div>
               <CartButton />

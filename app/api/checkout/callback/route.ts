@@ -96,7 +96,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ success: true, data: body });
   } catch (error) {
-    console.log("Error while execution checkout-callback:", error);
+    console.error("Error while execution checkout-callback:", error);
     return NextResponse.json("Error", { status: 500 });
   }
 }

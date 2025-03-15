@@ -7,17 +7,21 @@ import { PersonalInfo } from "@/src/components/shared/checkout/personal-info";
 import { useCart } from "@/src/hooks";
 import { createOrder } from "@/src/lib/actions/order.actions";
 import { checkoutFormSchema, CheckoutFormValues } from "@/src/lib/utils";
+import { Api } from "@/src/services/api-cient";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
+import React from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 
 export default function Chekout() {
   const { items, loading, totalAmount, updateItemQuantity, removeCartItem } = useCart();
+  const { data: session } = useSession();
 
   const form = useForm<CheckoutFormValues>({
     resolver: zodResolver(checkoutFormSchema),
     defaultValues: {
-      firstName: "",
+      firstName: session?.user.name || "",
       lastName: "",
       email: "",
       phone: "",
@@ -25,6 +29,20 @@ export default function Chekout() {
       comment: "",
     },
   });
+
+  React.useEffect(() => {
+    async function fetchUserInfo() {
+      const user = await Api.auth.getMe();
+      const [firstName, lastName] = user.fullName.split(" ");
+
+      form.setValue("firstName", firstName);
+      form.setValue("lastName", lastName);
+      form.setValue("email", user.email);
+    }
+    if (session) {
+      fetchUserInfo();
+    }
+  }, [session]);
 
   const onSubmit = async (data: CheckoutFormValues) => {
     try {
@@ -37,7 +55,7 @@ export default function Chekout() {
       }
     } catch (error) {
       toast.error("Faliled to create an order", { icon: "❌" });
-      console.log(error);
+      console.error(error);
     } finally {
     }
   };
@@ -50,7 +68,12 @@ export default function Chekout() {
           {/* Left side */}
           <div className="flex flex-col gap-10 flex-1 mb-20">
             {/* Cart */}
-            <Cart items={items} loading={loading} updateItemQuantity={updateItemQuantity} removeCartItem={removeCartItem} />
+            <Cart
+              items={items}
+              loading={loading}
+              updateItemQuantity={updateItemQuantity}
+              removeCartItem={removeCartItem}
+            />
 
             {/* Personal data */}
             <PersonalInfo loading={loading} />

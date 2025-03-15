@@ -30,6 +30,9 @@ export { CheckoutSideBar } from "./checkout-side-bar";
 export { RequiredSymbol } from "./required-symbol";
 export { ErrorText } from "./error-text";
 export { ClearButton } from "./clear-button";
+export { ProfileButton } from "./profile-button";
+export { InfoBlock } from "./info-block";
+export { ProfileForm } from "./profile-form";
 
 export * from "./checkout-form";
 export * from "./modals";
