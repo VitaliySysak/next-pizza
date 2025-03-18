@@ -1,5 +1,3 @@
-import { hostname } from "os";
-
 const nextConfig = {
   reactStrictMode: false,
   images: {
@@ -7,10 +5,6 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "www.google.com",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.inappstory.ru",
       },
       {
         protocol: "https",
@@ -31,6 +25,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "prontopizza.ua",
+      },
+      {
+        protocol: "https",
+        hostname: "mapizza.com.ua",
       },
     ],
   },

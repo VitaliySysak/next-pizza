@@ -27,21 +27,22 @@ export const ProductCard: React.FC<Props> = ({ id, name, price, ingredients, cou
 
         <Title text={name} size="sm" className="mb-1 mt-3 font-bold" />
         <p className="text-sm text-gray-400">{ingredients.map((ingredient) => ingredient.name).join(", ")}</p>
-      </Link>
-      <div className="flex justify-between items-center mt-4">
-        <span className="text-[20px]">
-          from <b>${price}</b>
-        </span>
 
-        {count ? (
-          <CountButton value={count} size="lg" />
-        ) : (
-          <Button variant="secondary">
-            <Plus size={20} className="mr-1" />
-            Add
-          </Button>
-        )}
-      </div>
+        <div className="flex justify-between items-center mt-4">
+          <span className="text-[20px]">
+            from <b>${price}</b>
+          </span>
+
+          {count ? (
+            <CountButton value={count} size="lg" />
+          ) : (
+            <Button variant="secondary">
+              <Plus size={20} className="mr-1" />
+              Add
+            </Button>
+          )}
+        </div>
+      </Link>
     </div>
   );
 };
