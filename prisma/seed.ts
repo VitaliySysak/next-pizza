@@ -7,7 +7,15 @@ const randomDecimalNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) * 10 + min * 10) / 10;
 };
 
-const generateProductItem = ({ productId, pizzaType, size }: { productId: number; pizzaType?: 1 | 2; size?: 20 | 30 | 40 }) => {
+const generateProductItem = ({
+  productId,
+  pizzaType,
+  size,
+}: {
+  productId: number;
+  pizzaType?: 1 | 2;
+  size?: 20 | 30 | 40;
+}) => {
   return {
     productId,
     price: randomDecimalNumber(190, 600),
@@ -22,14 +30,14 @@ async function up() {
       {
         fullName: "User Test",
         email: "user@test.com",
-        password: hashSync("111111", 10),
+        password: hashSync("qwerty", 10),
         verified: new Date(),
         role: "USER",
       },
       {
         fullName: "Admin Admin",
         email: "admin@test.com",
-        password: hashSync("111111", 10),
+        password: hashSync("QWERTY", 10),
         verified: new Date(),
         role: "ADMIN",
       },
@@ -50,37 +58,69 @@ async function up() {
 
   const pizza1 = await prisma.product.create({
     data: {
-      name: "Pepperoni Fresh",
-      imageUrl: "https://media.dodostatic.net/image/r:233x233/11EE7D61304FAF5A98A6958F2BB2D260.webp",
-      categoryId: 1,
-      ingredients: {
-        connect: _ingredients.slice(0, 5),
-      },
-    },
-  });
-  
-  const pizza2 = await prisma.product.create({
-    data: {
-      name: "Cheese",
-      imageUrl: "https://media.dodostatic.net/image/r:233x233/11EE7D610CF7E265B7C72BE5AE757CA7.webp",
-      categoryId: 1,
-      ingredients: {
-        connect: _ingredients.slice(5, 10),
-      },
-    },
-  });
-  
-  const pizza3 = await prisma.product.create({
-    data: {
-      name: "Chorizo Fresh",
-      imageUrl: "https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp",
+      name: "Texas",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/texas-300x300.webp",
       categoryId: 1,
       ingredients: {
         connect: _ingredients.slice(10, 17),
       },
     },
   });
-  
+
+  const pizza2 = await prisma.product.create({
+    data: {
+      name: "Mexico",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/mexico-300x300.webp",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(10, 17),
+      },
+    },
+  });
+
+  const pizza3 = await prisma.product.create({
+    data: {
+      name: "Chicken",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/chicken-300x300.webp",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(10, 17),
+      },
+    },
+  });
+
+  const pizza4 = await prisma.product.create({
+    data: {
+      name: "Pepperoni Fresh",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/pepperoni-300x300.webp",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(0, 5),
+      },
+    },
+  });
+
+  const pizza5 = await prisma.product.create({
+    data: {
+      name: "Cheese",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/cheese-300x300.webp",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(5, 10),
+      },
+    },
+  });
+
+  const pizza6 = await prisma.product.create({
+    data: {
+      name: "Chorizo Fresh",
+      imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/pizza/salami-300x300.webp",
+      categoryId: 1,
+      ingredients: {
+        connect: _ingredients.slice(10, 17),
+      },
+    },
+  });
 
   await prisma.productItem.createMany({
     data: [
@@ -90,15 +130,27 @@ async function up() {
       generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40 }),
 
       generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40 }),
-      generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 20 }),
       generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40 }),
 
       generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20 }),
       generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30 }),
       generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40 }),
+
+      generateProductItem({ productId: pizza4.id, pizzaType: 1, size: 20 }),
+      generateProductItem({ productId: pizza4.id, pizzaType: 2, size: 30 }),
+      generateProductItem({ productId: pizza4.id, pizzaType: 2, size: 40 }),
+
+      generateProductItem({ productId: pizza5.id, pizzaType: 1, size: 20 }),
+      generateProductItem({ productId: pizza5.id, pizzaType: 1, size: 30 }),
+      generateProductItem({ productId: pizza5.id, pizzaType: 1, size: 40 }),
+      generateProductItem({ productId: pizza5.id, pizzaType: 2, size: 20 }),
+      generateProductItem({ productId: pizza5.id, pizzaType: 2, size: 30 }),
+      generateProductItem({ productId: pizza5.id, pizzaType: 2, size: 40 }),
+
+      generateProductItem({ productId: pizza6.id, pizzaType: 1, size: 20 }),
+      generateProductItem({ productId: pizza6.id, pizzaType: 2, size: 30 }),
+      generateProductItem({ productId: pizza6.id, pizzaType: 2, size: 40 }),
 
       generateProductItem({ productId: 1 }),
       generateProductItem({ productId: 2 }),
@@ -125,12 +177,12 @@ async function up() {
       {
         userId: 1,
         totalAmount: 0,
-        token: "11111",
+        token: "1111",
       },
       {
         userId: 2,
         totalAmount: 0,
-        token: "22222",
+        token: "2222",
       },
     ],
   });

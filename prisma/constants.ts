@@ -6,9 +6,6 @@ export const categories = [
     name: "Breakfast",
   },
   {
-    name: "Sushi",
-  },
-  {
     name: "Coffee",
   },
   {
@@ -131,68 +128,43 @@ export const products = [
     categoryId: 2,
   },
   {
-    name: "Caliphornia Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/caliphornia-sushi.webp",
+    name: "Cappuccino",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/coffee/cappuccino.webp",
     categoryId: 3,
   },
   {
-    name: "Cheese Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/cheese-sushi.webp",
+    name: "Ice Latte",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/coffee/ice-latte.webp",
     categoryId: 3,
   },
   {
-    name: "Chicken Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/chicken-sushi.webp",
+    name: "Blue Matcha",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/coffee/big-latte.webp",
     categoryId: 3,
   },
   {
-    name: "Crab Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/crab-sushi.webp",
+    name: "Frappe",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/coffee/frappe.webp",
     categoryId: 3,
   },
   {
-    name: "Filadelphid Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/filadelphia-sushi.webp",
-    categoryId: 3,
-  },
-  {
-    name: "Toronto Sushi",
-    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/toronto-sushi.webp",
-    categoryId: 3,
-  },
-  {
-    name: "Caramel Apple Milkshake",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE79702E2A22E693D96133906FB1B8.webp",
+    name: "Coca-Cola",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/drinks/cola-300x300.webp",
     categoryId: 4,
   },
   {
-    name: "Oreo Cookie Milkshake",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.webp",
+    name: "Sprite",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/drinks/sprite-300x300.webp",
     categoryId: 4,
   },
   {
-    name: "Classic Milkshake 👶",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.webp",
+    name: "Fanta",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/drinks/fanta-300x300.webp",
     categoryId: 4,
   },
   {
-    name: "Irish Cappuccino",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61999EBDA59C10E216430A6093.webp",
-    categoryId: 5,
-  },
-  {
-    name: "Caramel Cappuccino",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.webp",
-    categoryId: 5,
-  },
-  {
-    name: "Coconut Latte",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.webp",
-    categoryId: 5,
-  },
-  {
-    name: "Americano",
-    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61B044583596548A59078BBD33.webp",
-    categoryId: 5,
+    name: "Rich Apple Juice",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/drinks/rich-apple-300x300.webp",
+    categoryId: 4,
   },
 ];
