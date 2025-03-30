@@ -36,7 +36,7 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
             onClick={() => signIn("github", { callbackUrl: "/", redirect: true })}
             className="gap-2 h-12 p-2 flex-1"
           >
-            <Image width={24} height={24} src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github icon" />
+            <Image width={24} height={24} src="/public/assets/images/git-hub.png" alt="github icon" />
             GitHub
           </Button>
 

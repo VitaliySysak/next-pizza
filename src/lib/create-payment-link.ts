@@ -12,8 +12,8 @@ export const createPaymentLink = ({ amount, orderId, description }: CreatePaymen
     currency: "UAH",
     description: description,
     order_id: orderId,
-    result_url: BASE_URL + LIQPAY_RESULT_CALLBACK_URL!,
-    server_url: BASE_URL + LIQPAY_SERVER_CALLBACK_URL!,
+    result_url: BASE_URL! + LIQPAY_RESULT_CALLBACK_URL!,
+    server_url: BASE_URL! + LIQPAY_SERVER_CALLBACK_URL!,
   };
 
   const data = Buffer.from(JSON.stringify(paymentData)).toString("base64");

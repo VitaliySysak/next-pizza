@@ -1,195 +1,198 @@
 export const categories = [
   {
-    name: 'Pizzas',
+    name: "Pizzas",
   },
   {
-    name: 'Breakfast',
+    name: "Breakfast",
   },
   {
-    name: 'Snacks',
+    name: "Sushi",
   },
   {
-    name: 'Cocktails',
+    name: "Coffee",
   },
   {
-    name: 'Drinks',
+    name: "Drinks",
   },
 ];
 
 export const _ingredients = [
   {
-    name: 'Cheese Crust',
+    name: "Cheese Crust",
     price: 179,
-    imageUrl:
-      'https://cdn.dodostatic.net/static/Img/Ingredients/99f5cb91225b4875bd06a26d2e842106.png',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/cheese-crust.webp",
   },
   {
-    name: 'Creamy Mozzarella',
+    name: "Creamy Mozzarella",
     price: 79,
-    imageUrl:
-      'https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/creamy-mozzarella.webp",
   },
   {
-    name: 'Cheddar and Parmesan Cheese',
+    name: "Cheddar and Parmesan Cheese",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/cheddar-parmesan.webp",
   },
   {
-    name: 'Spicy Jalapeño',
+    name: "Spicy Jalapeño",
     price: 59,
-    imageUrl:
-      'https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/spicy-jalapeno.webp",
   },
   {
-    name: 'Tender Chicken',
+    name: "Tender Chicken",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/tender-chicken.webp",
   },
   {
-    name: 'Mushrooms',
+    name: "Mushrooms",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/mushrooms.webp",
   },
   {
-    name: 'Ham',
+    name: "Ham",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA61B9A8D61',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/ham.webp",
   },
   {
-    name: 'Spicy Pepperoni',
+    name: "Spicy Pepperoni",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA6258199C3',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/spicy-pepperoni.webp",
   },
   {
-    name: 'Hot Chorizo',
+    name: "Hot Chorizo",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA62D5D6027',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/hot-chorizo.webp",
   },
   {
-    name: 'Pickles',
+    name: "Pickles",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9EA89958D782B',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/pickles.webp",
   },
   {
-    name: 'Fresh Tomatoes',
+    name: "Fresh Tomatoes",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA7AC1A1D67',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/fresh-tomato.webp",
   },
   {
-    name: 'Red Onion',
+    name: "Red Onion",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA60AE6464C',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/red-onion.webp",
   },
   {
-    name: 'Juicy Pineapple',
+    name: "Juicy Pineapple",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A21DA51A81211E9AFA6795BA2A0',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/juicy-pineapple.webp",
   },
   {
-    name: 'Italian Herbs',
+    name: "Italian Herbs",
     price: 39,
-    imageUrl:
-      'https://cdn.dodostatic.net/static/Img/Ingredients/370dac9ed21e4bffaf9bc2618d258734.png',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/italian-herbs.webp",
   },
   {
-    name: 'Sweet Pepper',
+    name: "Sweet Pepper",
     price: 59,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA63F774C1B',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/sweet-pepper.webp",
   },
   {
-    name: 'Feta Cubes',
+    name: "Feta Cubes",
     price: 79,
-    imageUrl: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA6B0FFC349',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/feta-cubes.webp",
   },
   {
-    name: 'Meatballs',
+    name: "Meatballs",
     price: 79,
-    imageUrl:
-      'https://cdn.dodostatic.net/static/Img/Ingredients/b2f3a5d5afe44516a93cfc0d2ee60088.png',
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/ingredients/meet-balls.webp",
   },
 ].map((obj, index) => ({ id: index + 1, ...obj }));
 
 export const products = [
   {
-    name: 'Omelette with Ham and Mushrooms',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7970321044479C1D1085457A36EB.webp',
+    name: "Hamon Salad",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/salads/hamon-salad.webp",
     categoryId: 2,
   },
   {
-    name: 'Omelette with Pepperoni',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE94ECF33B0C46BA410DEC1B1DD6F8.webp',
+    name: "Caprese Salad",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/salads/caprese-salad.webp",
     categoryId: 2,
   },
   {
-    name: 'Coffee Latte',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B0C26A3F85D97A78FEEE00AD.webp',
+    name: "Cesare Salad",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/salads/cesare-salad.webp",
     categoryId: 2,
   },
   {
-    name: 'Ham and Cheese Sandwich',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FF0059B799A17F57A9E64C725.webp',
+    name: "Shrimp Salad",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/salads/shrimp-salad.webp",
+    categoryId: 2,
+  },
+  {
+    name: "Coffee Latte",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/coffee/big-latte.webp",
+    categoryId: 2,
+  },
+  {
+    name: "Caliphornia Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/caliphornia-sushi.webp",
     categoryId: 3,
   },
   {
-    name: 'Chicken Nuggets',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D618B5C7EC29350069AE9532C6E.webp',
+    name: "Cheese Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/cheese-sushi.webp",
     categoryId: 3,
   },
   {
-    name: 'Baked Potatoes with Sauce 🌱',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EED646A9CD324C962C6BEA78124F19.webp',
+    name: "Chicken Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/chicken-sushi.webp",
     categoryId: 3,
   },
   {
-    name: 'Dodster',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796F96D11392A2F6DD73599921B9.webp',
+    name: "Crab Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/crab-sushi.webp",
     categoryId: 3,
   },
   {
-    name: 'Spicy Dodster 🌶️🌶️',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FD3B594068F7A752DF8161D04.webp',
+    name: "Filadelphid Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/filadelphia-sushi.webp",
     categoryId: 3,
   },
   {
-    name: 'Banana Milkshake',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EEE20B8772A72A9B60CFB20012C185.webp',
+    name: "Toronto Sushi",
+    imageUrl: "https://storage.googleapis.com/website-images-dev/next-pizza-images/sushi/toronto-sushi.webp",
+    categoryId: 3,
+  },
+  {
+    name: "Caramel Apple Milkshake",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE79702E2A22E693D96133906FB1B8.webp",
     categoryId: 4,
   },
   {
-    name: 'Caramel Apple Milkshake',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE79702E2A22E693D96133906FB1B8.webp',
+    name: "Oreo Cookie Milkshake",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.webp",
     categoryId: 4,
   },
   {
-    name: 'Oreo Cookie Milkshake',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796FA1F50F8F8111A399E4C1A1E3.webp',
+    name: "Classic Milkshake 👶",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.webp",
     categoryId: 4,
   },
   {
-    name: 'Classic Milkshake 👶',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE796F93FB126693F96CB1D3E403FB.webp',
-    categoryId: 4,
-  },
-  {
-    name: 'Irish Cappuccino',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61999EBDA59C10E216430A6093.webp',
+    name: "Irish Cappuccino",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61999EBDA59C10E216430A6093.webp",
     categoryId: 5,
   },
   {
-    name: 'Caramel Cappuccino',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.webp',
+    name: "Caramel Cappuccino",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61AED6B6D4BFDAD4E58D76CF56.webp",
     categoryId: 5,
   },
   {
-    name: 'Coconut Latte',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.webp',
+    name: "Coconut Latte",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61B19FA07090EE88B0ED347F42.webp",
     categoryId: 5,
   },
   {
-    name: 'Americano',
-    imageUrl: 'https://media.dodostatic.net/image/r:292x292/11EE7D61B044583596548A59078BBD33.webp',
+    name: "Americano",
+    imageUrl: "https://media.dodostatic.net/image/r:292x292/11EE7D61B044583596548A59078BBD33.webp",
     categoryId: 5,
   },
-]
-
-
+];

@@ -24,7 +24,7 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({ title, ite
     if (intersection?.isIntersecting) {
       setActiveCategoryId(categoryId);
     }
-  }, [categoryId, intersection?.isIntersecting, title]);
+  }, [intersection?.isIntersecting]);
   return (
     <div className={className} id={title} ref={intersectionRef}>
       <Title text={title} size="lg" className="font-extrabold mb-5" />

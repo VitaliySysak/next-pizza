@@ -14,7 +14,10 @@ export const formRegisterSchema = formLoginSchema
       confirmPassword: passwordSchema,
     })
   )
-  .refine((data) => data.password === data.confirmPassword, { message: "passwords doesn't match", path: ["confirmPassword"] });
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "passwords doesn't match",
+    path: ["confirmPassword"],
+  });
 
 export type TFormLoginValues = z.infer<typeof formLoginSchema>;
 export type TFormRegisterValues = z.infer<typeof formRegisterSchema>;
