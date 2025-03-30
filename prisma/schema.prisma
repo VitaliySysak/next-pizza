@@ -76,7 +76,7 @@ model Cart {
 
 model CartItem {
   id            Int          @id @default(autoincrement())
-  quantity      Int @default(1)
+  quantity      Int          @default(1)
   createdAt     DateTime     @default(now())
   updatedAt     DateTime     @updatedAt
   productItemId Int
@@ -91,7 +91,6 @@ model Order {
   token       String
   totalAmount Int
   status      OrderStatus
-  paymentId   Int?
   items       Json
   fullName    String
   address     String
@@ -99,6 +98,7 @@ model Order {
   phone       String
   comment     String?
   userId      Int?
+  paymentId   Int?
   user        User?       @relation(fields: [userId], references: [id])
 }
 
