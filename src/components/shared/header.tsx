@@ -9,6 +9,8 @@ import { AuthModal, Container, ProfileButton, SearchInput } from "@/src/componen
 import { CartButton } from "@/src/components/shared";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
+import { getPaidInfo } from "@/src/services/paid-validation";
+import { OrderStatus } from "@prisma/client";
 
 interface Props {
   hasSearch?: boolean;
@@ -23,22 +25,37 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
   const router = useRouter();
 
   React.useEffect(() => {
-    let toastMessage = "";
+    const checkPaymentStatus = async () => {
+      if (searchParams.has("paid")) {
+        const orderId = searchParams.get("paid");
 
-    if (searchParams.has("paid")) {
-      toastMessage = "Order successfully paid!";
-    }
+        try {
+          const paid = await getPaidInfo(Number(orderId));
+          setTimeout(() => {
+            if (paid.status === OrderStatus.SUCCEEDED) {
+              toast.success("Order successfully paid!", { duration: 4000 });
+            } else if (paid.status === OrderStatus.CANCELLED) {
+              toast.error("Order payment has been failed!", { duration: 4000 });
+            } else {
+              toast.loading("Order waiting for payment!", { duration: 4000 });
+            }
+            router.replace("/");
+          }, 1000);
+        } catch (err) {
+          toast.error("Failed to verify order status.", { duration: 4000 });
+          console.error(err);
+        }
+      }
 
-    if (searchParams.has("verified")) {
-      toastMessage = "Email confirmed successfully!";
-    }
+      if (searchParams.has("verified")) {
+        setTimeout(() => {
+          toast.success("Email confirmed successfully!", { duration: 4000 });
+          router.replace("/");
+        }, 1000);
+      }
+    };
 
-    if (toastMessage) {
-      setTimeout(() => {
-        router.replace("/");
-        toast.success(toastMessage, { duration: 4000 });
-      }, 1000);
-    }
+    checkPaymentStatus(); 
   }, []);
 
   return (
