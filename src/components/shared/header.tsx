@@ -25,26 +25,35 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
   const router = useRouter();
 
   React.useEffect(() => {
-    const checkPaymentStatus = async () => {
-      if (searchParams.has("paid")) {
-        const orderId = searchParams.get("paid");
+    const pollPaymentStatus = async (orderId: number, attemptsLeft = 5) => {
+      try {
+        const paid = await getPaidInfo(orderId);
 
-        try {
-          const paid = await getPaidInfo(Number(orderId));
-          setTimeout(() => {
-            if (paid.status === OrderStatus.SUCCEEDED) {
-              toast.success("Order successfully paid!", { duration: 4000 });
-            } else if (paid.status === OrderStatus.CANCELLED) {
-              toast.error("Order payment has been failed!", { duration: 4000 });
-            } else {
-              toast.loading("Order waiting for payment!", { duration: 4000 });
-            }
+        if (paid.status === OrderStatus.SUCCEEDED) {
+          toast.success("Order successfully paid!", { duration: 4000 });
+          router.replace("/");
+        } else if (paid.status === OrderStatus.CANCELLED) {
+          toast.error("Order payment has failed!", { duration: 4000 });
+          router.replace("/");
+        } else {
+          if (attemptsLeft > 0) {
+            setTimeout(() => pollPaymentStatus(orderId, attemptsLeft - 1), 2000);
+          } else {
+            toast.loading("Order is still pending, please wait or check later.", { duration: 4000 });
             router.replace("/");
-          }, 1000);
-        } catch (err) {
-          toast.error("Failed to verify order status.", { duration: 4000 });
-          console.error(err);
+          }
         }
+      } catch (err) {
+        toast.error("Failed to verify order status.", { duration: 4000 });
+        console.error(err);
+        router.replace("/");
+      }
+    };
+
+    const checkPaymentStatus = () => {
+      if (searchParams.has("paid")) {
+        const orderId = Number(searchParams.get("paid"));
+        pollPaymentStatus(orderId);
       }
 
       if (searchParams.has("verified")) {
@@ -55,7 +64,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
       }
     };
 
-    checkPaymentStatus(); 
+    checkPaymentStatus();
   }, []);
 
   return (
