@@ -5,8 +5,6 @@ export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const orderId = searchParams.get("paid");
 
-  console.log("paidOrderId:", orderId);
-
   if (!orderId) {
     return NextResponse.json({ error: "No order ID provided" }, { status: 400 });
   }
@@ -18,8 +16,6 @@ export async function GET(req: Request) {
   if (!order) {
     return NextResponse.json({ status: "not_found" });
   }
-
-  console.log(order)
 
   return NextResponse.json({ status: order.status });
 }

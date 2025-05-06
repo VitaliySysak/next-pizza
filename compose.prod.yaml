@@ -1,0 +1,12 @@
+services:
+  next-pizza:
+    image: bering152/next-pizza-prod:latest
+    container_name: next-pizza-prod
+    build:
+      context: .
+      target: production
+    env_file:
+      - .env.production
+
+    ports:
+      - "3000:3000"

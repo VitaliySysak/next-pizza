@@ -1,0 +1,22 @@
+services:
+  next-pizza:
+    image: bering152/next-pizza-dev:latest
+    container_name: next-pizza-dev
+    build:
+      context: .
+      target: development
+    env_file:
+      - .env
+    develop:
+      watch:
+        - path: ./
+          target: /app
+          action: sync
+        - path: ./package.json
+          action: rebuild
+        - path: ./package-lock.json
+          action: rebuild
+
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
