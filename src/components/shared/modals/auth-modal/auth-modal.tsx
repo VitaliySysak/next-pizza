@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Dialog, DialogContent } from "@/src/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/src/components/ui/dialog";
 import { Button } from "@/src/components/ui";
 import { signIn } from "next-auth/react";
 import { cn } from "@/src/lib/utils";
@@ -26,7 +26,8 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
   };
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="w-[450px] bg-white p-10">
+      <DialogContent className="rounded-xl sm:w-[450px] bg-white sm:p-10">
+        <DialogTitle></DialogTitle>
         {type === "login" ? <LoginForm onClose={handleClose} /> : <RegisterForm onClose={handleClose} />}
 
         <hr />
@@ -36,7 +37,7 @@ export const AuthModal: React.FC<Props> = ({ className, open, onClose }) => {
             onClick={() => signIn("github", { callbackUrl: "/", redirect: true })}
             className="gap-2 h-12 p-2 flex-1"
           >
-            <Image width={24} height={24} src="/public/assets/images/git-hub.png" alt="github icon" />
+            <Image width={24} height={24} src="/assets/images/git-hub.png" alt="github icon" />
             GitHub
           </Button>
 

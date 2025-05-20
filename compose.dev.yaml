@@ -1,10 +1,10 @@
 services:
-  next-pizza:
-    container_name: next-pizza-dev
+  crustloop-pizza:
+    container_name: crustloop-pizza-dev
     build:
       context: .
       target: development
-    image: bering152/next-pizza-dev:latest
+    image: bering152/crustloop-pizza-dev:latest
     env_file:
       - .env
     develop:

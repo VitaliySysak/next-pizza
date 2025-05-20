@@ -3,7 +3,7 @@ import { Header } from "@/src/components/shared";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Next Pizza | Home",
+  title: "Crustloop Pizza | Home",
 };
 
 export default function HomeLayout({

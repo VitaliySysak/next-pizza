@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
       <Container className="mt-10 pb-14">
         <div className="flex gap-[60px] lg:flex-row flex-col items-center lg:items-start">
           {/*Filtration*/}
-          <div className="w-full px-4 md:px-0 md:w-[250px]">
+          <div className="w-full px-10 lg:px-0 lg:w-[250px]">
             <Suspense>
               <div className="flex-1 md:hidden">
                 <SearchInput />

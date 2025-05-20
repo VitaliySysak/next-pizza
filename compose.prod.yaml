@@ -1,12 +1,41 @@
 services:
-  next-pizza:
-    container_name: next-pizza-prod
+  app:
+    depends_on:
+      db:
+        condition: service_healthy
+    container_name: crustloop-pizza-app-prod
     build:
       context: .
       target: production
-    image: bering152/next-pizza-prod:latest
+    image: bering152/c-prod:latest
     env_file:
       - .env.production
-
     ports:
       - "3000:3000"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  db:
+    container_name: crustloop-pizza-database-prod
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: nHlJ2M7f6ylW4MR
+      POSTGRES_DB: crustloop-pizza
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    image: postgres:15
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    ports:
+      - "5432:5432"
+
+volumes:
+  db-data:
+    name: crustloop-pizza-db-data

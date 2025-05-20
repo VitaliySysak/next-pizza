@@ -21,7 +21,9 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
       throw new Error("User already exist");
     }
+
     body.fullName, 999;
+    
     const createdUser = await prisma.user.create({
       data: {
         fullName: body.fullName,
@@ -41,7 +43,7 @@ export async function registerUser(body: Prisma.UserCreateInput) {
 
     await sendEmail(
       createdUser.email,
-      "Next Pizza / Confirm registration",
+      "Crustloop Pizza / Confirm registration",
       UserVerification({
         code,
       })

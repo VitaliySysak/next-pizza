@@ -26,8 +26,8 @@ export const Filters: React.FC<Props> = ({ className }) => {
 
   return (
     <>
-      <Button variant="outline" className="w-32 mt-4 sm:hidden" onClick={() => setOpenFilters((prev) => !prev)}>Filters</Button>
-      <div className={cn(className, "hidden sm:block", openFilters && "block mt-4")}>
+      <Button variant="outline" className="w-32 mt-4 lg:hidden" onClick={() => setOpenFilters((prev) => !prev)}>Filters</Button>
+      <div className={cn(className, "hidden lg:block", openFilters && "block mt-4")}>
         <Title text="Filtration" size="sm" className="mb-5 font-bold" />
 
         {/* Upper Checkbox */}

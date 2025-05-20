@@ -22,6 +22,7 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart = true }) => {
   const [openAuthModal, setOpenAuthModal] = React.useState(false);
+  const [openDrawer, setOpenDrawer] = React.useState(false);
 
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -74,7 +75,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
       {/* Mobile */}
       <Container className="sm:hidden flex flex-col gap-4 items-center justify-between py-2">
         {/*Left side */}
-        <div className="flex w-full justify-between px-4">
+        <div className="flex w-full justify-between">
           <button onClick={() => setOpenDrawer((prev) => !prev)}>
             <Hamburger size={30} color="#ff5e00" toggled={false} toggle={() => {}} />
           </button>
@@ -90,7 +91,12 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
               <div className="flex items-center justify-between">
                 <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
 
-                <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
+                <ProfileButton
+                  onClickSignIn={() => {
+                    setOpenAuthModal(true);
+                    setOpenDrawer(false)
+                  }}
+                />
                 {hasCart && (
                   <Link href={"/checkout"}>
                     <div className="pointer-events-none">
@@ -106,7 +112,7 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
             <div className="flex items-center gap-2 mx-2">
               <Image src={logo} width={24} height={24} alt="Logo" />
               <div>
-                <h1 className="text-lg uppercase font-black">Next Pizza</h1>
+                <h1 className="text-lg uppercase font-black">Crustloop Pizza</h1>
                 <p className="text-sm text-gray-400 leading-3">can&apos;t be tastier</p>
               </div>
             </div>
@@ -121,13 +127,13 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
           <div className="flex items-center gap-4">
             <Image src={logo} width={35} height={35} alt="Logo" />
             <div>
-              <h1 className="text-2xl uppercase font-black">Next Pizza</h1>
+              <h1 className="text-2xl uppercase font-black">Crustloop Pizza</h1>
               <p className="text-sm text-gray-400 leading-3">can&apos;t be tastier</p>
             </div>
           </div>
         </Link>
         {hasSearch && (
-          <div className="mx-10 flex-1">
+          <div className="hidden md:block mx-10 flex-1">
             <React.Suspense>
               <SearchInput />
             </React.Suspense>

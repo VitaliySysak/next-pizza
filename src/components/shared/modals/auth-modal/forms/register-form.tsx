@@ -30,7 +30,6 @@ export const RegisterForm: React.FC<Props> = ({ className, onClose }) => {
   });
 
   const onSubmit = async (data: TFormRegisterValues) => {
-
     try {
       await registerUser({
         email: data.email,

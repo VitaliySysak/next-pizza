@@ -14,7 +14,7 @@ export const SortPopup: React.FC<SortPopupProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        "inline-flex items-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer",
+        "items-center gap-1 bg-gray-50 px-5 h-[52px] rounded-2xl cursor-pointer hidden md:inline-flex",
         className
       )}>
       <ArrowUpDown className="w-4 h-4" />
