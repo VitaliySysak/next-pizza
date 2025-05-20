@@ -15,6 +15,8 @@ const DEFAULT_MAX_PRICE = 1000;
 
 export const findPizzas = async (params: GetSearchParams) => {
   const sizes = params.sizes?.split(",").map(Number);
+  const sortBy = params.sortBy
+  console.log("sortBy:", sortBy);
   const pizzaTypes = params.pizzaTypes?.split(",").map(Number);
   const ingredientsIdArray = params.ingredients?.split(",").map(Number);
 

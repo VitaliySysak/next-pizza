@@ -64,7 +64,7 @@ export default function Chekout() {
     <Container className="mt-5">
       <Title text="Checkout process" className="font-extrabold mb-6 text-[36px]" />
       <FormProvider {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-10">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="sm:flex gap-10">
           {/* Left side */}
           <div className="flex flex-col gap-10 flex-1 mb-20">
             {/* Cart */}

@@ -1,10 +1,10 @@
 services:
   next-pizza:
-    image: bering152/next-pizza-dev:latest
     container_name: next-pizza-dev
     build:
       context: .
       target: development
+    image: bering152/next-pizza-dev:latest
     env_file:
       - .env
     develop:

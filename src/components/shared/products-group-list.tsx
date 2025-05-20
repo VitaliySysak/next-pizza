@@ -27,8 +27,8 @@ export const ProductsGroupList: React.FC<ProductsGroupListProps> = ({ title, ite
   }, [intersection?.isIntersecting]);
   return (
     <div className={className} id={title} ref={intersectionRef}>
-      <Title text={title} size="lg" className="font-extrabold mb-5" />
-      <div className={cn("grid grid-cols-3 gap-[50px]", listClassName)}>
+      <Title text={title} size="lg" className="font-extrabold mb-5 mx-4 sm:mx-0" />
+      <div className={cn("grid grid-cols-1 sm:grid-cols-3 gap-[25px] lg:gap-[50px]", listClassName)}>
         {items.map((product) => (
           <ProductCard
             key={product.id}

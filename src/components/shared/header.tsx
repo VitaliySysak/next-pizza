@@ -11,6 +11,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
 import { getPaidInfo } from "@/src/services/paid-validation";
 import { OrderStatus } from "@prisma/client";
+import Hamburger from "hamburger-react";
+import { Drawer } from "antd";
 
 interface Props {
   hasSearch?: boolean;
@@ -69,7 +71,51 @@ export const Header: React.FC<Props> = ({ className, hasSearch = true, hasCart =
 
   return (
     <header className={cn("border-b", className)}>
-      <Container className="flex items-center justify-between py-8">
+      {/* Mobile */}
+      <Container className="sm:hidden flex flex-col gap-4 items-center justify-between py-2">
+        {/*Left side */}
+        <div className="flex w-full justify-between px-4">
+          <button onClick={() => setOpenDrawer((prev) => !prev)}>
+            <Hamburger size={30} color="#ff5e00" toggled={false} toggle={() => {}} />
+          </button>
+          <Drawer
+            className="p-0 h-12"
+            placement={"top"}
+            height={82}
+            closable={false}
+            onClose={() => setOpenDrawer((prev) => !prev)}
+            open={openDrawer}
+            key={"top"}>
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <AuthModal open={openAuthModal} onClose={() => setOpenAuthModal(false)} />
+
+                <ProfileButton onClickSignIn={() => setOpenAuthModal(true)} />
+                {hasCart && (
+                  <Link href={"/checkout"}>
+                    <div className="pointer-events-none">
+                      <CartButton />
+                    </div>
+                  </Link>
+                )}
+              </div>
+              <hr />
+            </div>
+          </Drawer>
+          <Link href="/">
+            <div className="flex items-center gap-2 mx-2">
+              <Image src={logo} width={24} height={24} alt="Logo" />
+              <div>
+                <h1 className="text-lg uppercase font-black">Next Pizza</h1>
+                <p className="text-sm text-gray-400 leading-3">can&apos;t be tastier</p>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </Container>
+
+      {/* Desktop */}
+      <Container className="hidden sm:flex items-center justify-between py-8">
         {/*Left side */}
         <Link href="/">
           <div className="flex items-center gap-4">
