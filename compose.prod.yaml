@@ -39,4 +39,3 @@ services:
 volumes:
   db-data:
     name: crustloop-pizza-db-data
-
