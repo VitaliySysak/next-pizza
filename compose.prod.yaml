@@ -7,7 +7,7 @@ services:
     build:
       context: .
       target: production
-    image: bering152/c-prod:latest
+    image: bering152/crustloop-pizza-prod:latest
     env_file:
       - .env.production
     ports:
