@@ -10,17 +10,6 @@ const {
 } = process.env;
 
 export const createPaymentLink = ({ amount, orderId, description }: CreatePaymentLinkProps) => {
-  console.log("test:");
-  console.log({
-    LIQPAY_PRIVATE_KEY,
-    LIQPAY_PUBLIC_KEY,
-    LIQPAY_RESULT_CALLBACK_URL,
-    LIQPAY_SERVER_CALLBACK_URL,
-    BASE_URL,
-    amount,
-    orderId,
-    description,
-  });
   const paymentData: PaymentData = {
     version: 3,
     public_key: LIQPAY_PUBLIC_KEY!,
