@@ -4,7 +4,7 @@ import { findPizzas, GetSearchParams } from "@/src/lib/find-pizzas";
 
 export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
   const categories = await findPizzas(searchParams);
-
+  console.log("NEXT_PUBLIC_API_URL:", process.env.NEXT_PUBLIC_API_URL);
   return (
     <>
       <Container className="mt-8 hidden md:block">
