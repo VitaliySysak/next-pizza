@@ -12,7 +12,7 @@ export const UserVerification: React.FC<Props> = ({ className, code }) => {
         Verification code: <h2>{code}</h2>
       </p>
       <p>
-        <a href={process.env.BASE_URL + "/api/auth/verify?code=" + code}>Confirm registration</a>
+        <a href={process.env.NEXT_PUBLIC_BASE_URL + "/api/auth/verify?code=" + code}>Confirm registration</a>
       </p>
     </div>
   );
